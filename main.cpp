@@ -1,6 +1,7 @@
-#include "Generator.h"
-#include "Pin.h"
+#include "Pin/Pin.h"
+#include "Generator/Generator.h"
 
+#include <vector>
 #include <iostream>
 
 int main() {
@@ -8,9 +9,9 @@ int main() {
 
 	GeneratorInterface *g = new Generator();
 
-	Pin p = g->generatePin("TEST");
+	std::vector<Pin> p = g->generatePin("C8:3A:35:2D:9C:C0");
 
-	std::cout<<"PIN:\t"<<p.toString()<<"\tVALID:\t"<<p.valid()<<std::endl;
+	std::cout << "PIN:\t" << p[0].toString() << "\tVALID:\t" << p[0].valid() << std::endl;
 
 	return 0;
 }

@@ -11,13 +11,34 @@
  * @return true if pin is valid, false otherwise
  */
 bool Pin::valid() const {
-	throw std::logic_error("NOT IMPLEMENTED");
+	bool valid = true;
+
+	//TODO tests
+
+	switch (valid) {
+		case true:
+			return valid;
+			break;
+		case false:
+			throw std::logic_error("Pin generated is not valid");
+			break;
+	}
+
 }
 
 Pin::Pin(const std::string &pin) {
 	this->pin = pin;
+	this->valid();
 }
 
 std::string Pin::toString() const {
+	std::to_string(pin);
+}
+
+long Pin::toInteger() const {
 	return pin;
+}
+
+Pin::Pin(const long &pin) {
+	return ;
 }

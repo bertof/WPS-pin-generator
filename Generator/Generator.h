@@ -8,13 +8,18 @@
 #include "GeneratorInterface.h"
 
 #include <string>
+#include <vector>
 
+/**
+ * Base class Generator
+ * Used to generate valid Pins
+ */
 class Generator : public GeneratorInterface {
 public:
-	Pin generatePin(const std::string &s) const override;
+	std::vector<Pin> generatePin(const std::string &s) const override;
 
 private:
-	Pin generatePinImp(const std::string &s) const;
+	std::vector<Pin> generatePinImp(const std::string &s) const;
 };
 
 
