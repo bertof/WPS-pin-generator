@@ -6,7 +6,7 @@
 #define WPS_PIN_GENERATOR_GENERATOR_H
 
 #include "GeneratorInterface.h"
-#include "../Exceptions.h"
+#include "../Exceptions/NotImplementedException.h"
 
 #include <string>
 #include <vector>
@@ -23,8 +23,8 @@ public:
 	 * @param s string of data
 	 * @return Pin valid pin generated
 	 */
-	std::vector<Pin> generatePin(const std::string &s) const override {
-		throw NotImplementedException();
+	virtual std::vector<Pin> generatePin(const std::string &s) const override {
+		return generatePinImp(s);
 	}
 
 private:
@@ -36,6 +36,7 @@ private:
 	 */
 	std::vector<Pin> generatePinImp(const std::string &s) const {
 		throw NotImplementedException();
+		return std::vector<Pin>();
 	}
 };
 

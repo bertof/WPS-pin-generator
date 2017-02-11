@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Generator/Generator.h"
+#include "Generator/Generator.cpp"
 
 int main() {
 	std::cout << "WPS Pin Generator - by Bertof" << std::endl;

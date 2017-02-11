@@ -3,5 +3,5 @@ project(WPS_pin_generator)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Generator/GeneratorInterface.h Pin/Pin.h Exceptions.h Generator/Generator.h)
-add_executable(WPS_pin_generator ${SOURCE_FILES} Generator/GeneratorInterface.h)
+set(SOURCE_FILES main.cpp Generator/GeneratorInterface.h Pin/Pin.h Generator/Generator.h Exceptions/NotImplementedException.h Generator/Generator.cpp)
+add_executable(WPS_pin_generator ${SOURCE_FILES})
