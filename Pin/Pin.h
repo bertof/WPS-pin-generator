@@ -15,39 +15,44 @@
 class Pin {
 
 private:
-	long pin;  // content of the pin
+	long pinValue;  // content of the pinValue
 
 public:
 	/**
 	 * Constructor using string
 	 * @param pin
 	 */
-	Pin(const std::string &pin);
+	Pin(const std::string &pin) {
+		this->pinValue = atoi(pin.c_str());
+		this->valid();
+	}
 
 	/**
 	 * Constructor using long integer
 	 * @param pin
 	 */
-	Pin(const long &pin);
+	Pin(const long &pin) : pinValue(pin) {
+		this->valid();
+	}
 
 	/**
 	 * Checks if the pin is a valid one
 	 * @return true if valid, false otherwise
 	 */
-	bool valid() const;
+	bool valid() const { return false; }
 
 	/**
 	 * Returns pin using a string
 	 * @return string of pin
 	 */
-	std::string toString() const;
+	std::string toString() const { return std::to_string(pinValue); }
 
 	/**
 	 * Returns pin using a long integer
 	 * @return pin (integer)
 	 * @attention This integer does not take in account initial 0 values
 	 */
-	long toInteger() const;
+	long toInteger() const { return pinValue; }
 };
 
 

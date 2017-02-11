@@ -4,7 +4,8 @@
 
 /***    GeneratorInterface
  * GeneratorInterface is an base class interface used to implement
- * the design pattern strategy
+ * the design pattern strategy, this way it's easy to add new generation
+ * algorithms.
  */
 
 #ifndef WPS_PIN_GENERATOR_GENERATORINTERFACE_H
