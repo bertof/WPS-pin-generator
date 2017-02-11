@@ -16,3 +16,13 @@ All names and history of that file can be found in <a href="https://github.com/l
 
 The use of this program is intended to be in a authorized environment. Don't use it against networks you do not own or you do not have legal permission to attack.
 Every illicit use of this program has nothing to do with the author.
+
+## Dependencies
+- <a href="http://www.boost.org/">Boost</a>
+    - Check file path for log
+    - Get local date time for log
+- <a href="https://github.com/agauniyal/rang">Ranq</a> (git submodule)
+    - Cross platform color terminal output
+
+## Build environment
+I'm building this on ArchLinux, but I'm trying to keep all the components as cross platform capable as possible. It should work on Linux, Windows and MacOS, but I can test it only on Linux.
