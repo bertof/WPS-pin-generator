@@ -4,8 +4,12 @@
 #include <vector>
 #include <iostream>
 
+#include "Debugger.h"
+
 int main() {
 	std::cout << "WPS Pin Generator - by Bertof" << std::endl;
+
+	Debugger::testColors();
 
 	GeneratorInterface *g = new Generator();
 
