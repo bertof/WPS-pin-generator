@@ -11,24 +11,29 @@
 #include <string>
 
 #include "../Logger/ScreenLogger/ScreenLogger.h"
+#include "../Logger/TextLogger/TextLogger.h"
 
 std::vector<Pin> Generator::generatePinImp(const std::string &s) const {
 //	throw NotImplementedException();
 
-	Logger *log = new ScreenLogger();
+	Logger *screenLog = new ScreenLogger();
+	Logger *fileLog = new TextLogger();
 
 	std::string stringPassed = std::string(s);
 
-	log->logDebug("String passed:\t" + stringPassed);
+	screenLog->logDebug("String passed:\t" + stringPassed);
+	fileLog->logDebug("String passed:\t" + stringPassed);
 
 	// Cleaning input string, only hexadecimal characters allowed
 	std::string cleanedString = std::regex_replace(stringPassed, std::regex("[^0-9A-F]:"), "");
 
-	log->logDebug("Cleaned string:\t" + cleanedString);
+	screenLog->logDebug("Cleaned string:\t" + cleanedString);
+	fileLog->logDebug("Cleaned string:\t" + cleanedString);
 
 	// Check if length is valid
 	if (cleanedString.length() != 12 + 5) {
-		log->logError("The string passed is not a valid MAC address");
+		screenLog->logError("The string passed is not a valid MAC address");
+		fileLog->logError("The string passed is not a valid MAC address");
 		throw InvalidInputException("The string passed is not a valid MAC address");
 	}
 

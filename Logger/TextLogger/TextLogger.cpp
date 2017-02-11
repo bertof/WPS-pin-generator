@@ -5,7 +5,7 @@
 #include "TextLogger.h"
 #include "../ScreenLogger/ScreenLogger.h"
 #include <boost/filesystem/fstream.hpp>
-#include <boost/filesystem/path.hpp>
+#include <boost/date_time.hpp>
 
 /** Logs a message in the log file
  * Logs the message passed in the log file
@@ -54,7 +54,9 @@ void TextLogger::logText(const std::string &message) {
 		ScreenLogger l;
 		l.logError("Can't open the log file (" + filePath + ")");
 	} else {
-		fileOutput << message << std::endl;
+		std::string nowString = boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time());
+
+		fileOutput << nowString << "\t" << message << std::endl;
 		fileOutput.close();
 	}
 }
