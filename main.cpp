@@ -1,11 +1,12 @@
 #include <iostream>
 #include "Generator/Generator.h"
-#include "Debugger/Debugger.h"
+#include "Logger/ScreenLogger/ScreenLogger.h"
 
 int main() {
 	std::cout << "WPS Pin Generator - by Bertof" << std::endl;
 
-	Debugger::toggleDebugActivityStatus();
+	//TODO test enabled debug
+	Logger::setDebugLogActive(true);
 
 	Generator g = Generator();
 

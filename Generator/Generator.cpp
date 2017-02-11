@@ -8,27 +8,29 @@
 
 #include <regex>
 #include <stdexcept>
+#include <string>
 
-#include "../Debugger/Debugger.h"
+#include "../Logger/ScreenLogger/ScreenLogger.h"
 
 std::vector<Pin> Generator::generatePinImp(const std::string &s) const {
 //	throw NotImplementedException();
 
+	Logger *log = new ScreenLogger();
+
 	std::string stringPassed = std::string(s);
 
-	Debugger::logDebug("String passed:\t" + stringPassed);
+	log->logDebug("String passed:\t" + stringPassed);
 
 	// Cleaning input string, only hexadecimal characters allowed
 	std::string cleanedString = std::regex_replace(stringPassed, std::regex("[^0-9A-F]:"), "");
 
-	Debugger::logDebug("Cleaned string:\t"+cleanedString);
+	log->logDebug("Cleaned string:\t" + cleanedString);
 
 	// Check if length is valid
 	if (cleanedString.length() != 12 + 5) {
-		Debugger::logError("The string passed is not a valid MAC address");
+		log->logError("The string passed is not a valid MAC address");
 		throw InvalidInputException("The string passed is not a valid MAC address");
 	}
-
 
 
 	return std::vector<Pin>();
