@@ -7,24 +7,20 @@
 
 #include <string>
 #include <iostream>
-#include "Exceptions/NotImplementedException.h"
+#include "../Exceptions/NotImplementedException.h"
 
-#include "lib/rang/include/rang.hpp"
+#include "../lib/rang/include/rang.hpp"
 
 class Debugger {
 
 public:
 	static void log(const std::string &string) {
-		throw NotImplementedException();
+		std::cout << rang::style::reset << string << std::endl;
 	}
 
 	static void logError(const std::string &string) {
-		throw NotImplementedException();
-	}
-
-	static void testColors() {
-		std::cout << rang::bg::blue << rang::fg::red << "Test" << rang::style::reset << std::endl;
-
+		std::cout << rang::fg::red << rang::style::bold << "ERROR: " << rang::style::reset << rang::fg::red << string
+		          << rang::style::reset << std::endl;
 	}
 };
 
