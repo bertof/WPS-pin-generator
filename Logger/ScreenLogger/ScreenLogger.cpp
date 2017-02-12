@@ -8,11 +8,11 @@
 #include <string>
 
 void ScreenLogger::log(const std::string &string) {
-	std::cout << rang::style::reset << string << std::endl;
+	std::clog << rang::style::reset << string << std::endl;
 }
 
 void ScreenLogger::logError(const std::string &string) {
-	std::cout << rang::fg::red << "ERROR" << rang::style::reset << ": " << rang::fg::red
+	std::clog << rang::fg::red << "ERROR" << rang::style::reset << ": " << rang::fg::red
 	          << string
 	          << rang::style::reset << std::endl;
 
@@ -20,7 +20,7 @@ void ScreenLogger::logError(const std::string &string) {
 
 void ScreenLogger::logDebug(const std::string &string) {
 	if (Logger::isDebugLogActive()) {
-		std::cout << rang::fg::cyan << "DEBUG" << rang::style::reset << ": " << string
+		std::clog << rang::fg::cyan << "DEBUG" << rang::style::reset << ": " << string
 		          << std::endl;
 	}
 }

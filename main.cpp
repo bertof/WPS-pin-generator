@@ -3,6 +3,9 @@
 #include "Logger/ScreenLogger/ScreenLogger.h"
 
 int main() {
+	//TODO better spash screen
+	//TODO input handling
+	//TODO guide on how to use it (--help)
 	std::cout << "WPS Pin Generator - by Bertof" << std::endl;
 
 	//TODO test enabled debug
