@@ -3,17 +3,17 @@
 //
 
 #include "Generator.h"
-#include "../Exceptions/NotImplementedException.h"
-#include "../Exceptions/InvalidInputException.h"
+#include "../../Exceptions/NotImplementedException.h"
+#include "../../Exceptions/InvalidInputException.h"
 
 #include <regex>
 #include <stdexcept>
 #include <string>
 
-#include "../Logger/ScreenLogger/ScreenLogger.h"
-#include "../Logger/TextLogger/TextLogger.h"
+#include "../../Logger/ScreenLogger/ScreenLogger.h"
+#include "../../Logger/TextLogger/TextLogger.h"
 
-std::vector<Pin> Generator::generatePinImp(const std::string &s) const {
+std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
 //	throw NotImplementedException();
 
 	Logger *screenLog = new ScreenLogger();
@@ -41,10 +41,10 @@ std::vector<Pin> Generator::generatePinImp(const std::string &s) const {
 	return std::vector<Pin>();
 }
 
-std::string Generator::author() const {
+std::string bertof::Generator::author() const {
 	return "bertof";
 }
 
-std::string Generator::version() const {
+std::string bertof::Generator::version() const {
 	return "0.0.1";
 }

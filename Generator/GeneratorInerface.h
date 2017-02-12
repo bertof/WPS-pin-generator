@@ -9,6 +9,7 @@
 #include "../Pin/Pin.h"
 
 class GeneratorInterface {
+public:
 	/** Method called to generate a pin
 	 * @param s	string of the mac address
 	 * @return 	non empty vector of valid Pins

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Generator/Generator.h"
+#include "Generator/bertofGenerator/Generator.h"
 #include "Logger/ScreenLogger/ScreenLogger.h"
 
 int main() {
@@ -8,9 +8,9 @@ int main() {
 	//TODO test enabled debug
 	Logger::setDebugLogActive(true);
 
-	Generator g = Generator();
+	GeneratorInterface *g = new bertof::Generator();
 
-	g.generatePin("7C:5C:F8:F6:D0:B5");
+	g->generatePin("7C:5C:F8:F6:D0:B5");
 
 	std::cout << "END MAIN" << std::endl;
 
