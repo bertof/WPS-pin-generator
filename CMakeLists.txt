@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(Boost_USE_STATIC_LIBS OFF)
 set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost 1.63.0 COMPONENTS filesystem date_time)
+find_package(Boost 1.58.0 COMPONENTS filesystem date_time)
 
 if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})

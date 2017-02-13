@@ -46,8 +46,7 @@ public:
 	 * Returns pin using a string
 	 * @return string of pin
 	 */
-	std::string toString() const {
-		return std::to_string(pinValue); }
+	std::string toString() const { return std::to_string(pinValue); }
 
 	/**
 	 * Returns pin using a long integer
