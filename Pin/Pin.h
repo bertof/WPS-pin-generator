@@ -6,6 +6,7 @@
 #define WPS_PIN_GENERATOR_PIN_H
 
 #include <string>
+#include <stdlib.h>
 
 /**
  * Class Pin
@@ -23,7 +24,7 @@ public:
 	 * @param pin
 	 */
 	Pin(const std::string &pin) {
-		this->pinValue = atoi(pin.c_str());
+		this->pinValue = std::atoi(pin.c_str());
 		this->valid();
 	}
 
