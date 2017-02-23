@@ -37,6 +37,15 @@ std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
 		throw InvalidInputException("The string passed is not a valid MAC address");
 	}
 
+	std::string hexValue = std::regex_replace(cleanedString, std::regex(":+"), "");
+
+	screenLog->logDebug("Hex value:\t" + hexValue);
+
+	unsigned long intValue = std::stoul(hexValue, nullptr, 16);
+
+	screenLog->logDebug("Int value:\t" + std::to_string(intValue));
+
+
 
 	return std::vector<Pin>();
 }
