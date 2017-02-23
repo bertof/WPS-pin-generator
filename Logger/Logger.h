@@ -12,11 +12,11 @@
 class Logger {
 
 public:
-	virtual void log(const std::string &message) = 0;
+	virtual void log(const std::string &messageError) const = 0;
 
-	virtual void logError(const std::string &messageError) = 0;
+	virtual void logDebug(const std::string &messageDebug) const = 0;
 
-	virtual void logDebug(const std::string &messageDebug) = 0;
+	virtual void logError(const std::string &messageDebug) const = 0;
 
 	virtual ~Logger() {}
 

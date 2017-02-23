@@ -13,14 +13,14 @@ public:
 
 	virtual ~TextLogger() {}
 
-	virtual void log(const std::string &message) override;
+	virtual void log(const std::string &message) const override;
 
-	virtual void logError(const std::string &messageError) override;
+	virtual void logError(const std::string &messageError) const override;
 
-	virtual void logDebug(const std::string &messageDebug) override;
+	virtual void logDebug(const std::string &messageDebug) const override;
 
 protected:
-	virtual void logText(const std::string &message);
+	virtual void logText(const std::string &message) const;
 
 	const std::string filePath;
 };

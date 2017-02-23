@@ -11,7 +11,7 @@
  * Logs the message passed in the log file
  * @param message
  */
-void TextLogger::log(const std::string &message) {
+void TextLogger::log(const std::string &message) const {
 	logText(message);
 }
 
@@ -19,7 +19,7 @@ void TextLogger::log(const std::string &message) {
  * Logs in the log file an error message
  * @param messageError
  */
-void TextLogger::logError(const std::string &messageError) {
+void TextLogger::logError(const std::string &messageError) const {
 	logText("Error:\t" + messageError);
 }
 
@@ -27,7 +27,7 @@ void TextLogger::logError(const std::string &messageError) {
  * If debugging is enabled loggs the message passed in the log file
  * @param messageDebug
  */
-void TextLogger::logDebug(const std::string &messageDebug) {
+void TextLogger::logDebug(const std::string &messageDebug) const {
 	if (Logger::isDebugLogActive()) {
 		logText("DEBUG:\t" + messageDebug);
 	}
@@ -47,7 +47,7 @@ TextLogger::TextLogger(const std::string &filePath) : filePath(filePath) {
 /** Opens file and appends the message passed
  * @param message	text to write in the log file
  */
-void TextLogger::logText(const std::string &message) {
+void TextLogger::logText(const std::string &message) const {
 	boost::filesystem::fstream fileOutput;
 	fileOutput.open(filePath, std::ofstream::app);
 	if (!fileOutput.is_open()) {

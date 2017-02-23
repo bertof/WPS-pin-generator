@@ -15,11 +15,11 @@ class ScreenLogger : public Logger {
 public:
 	virtual ~ScreenLogger() {}
 
-	virtual void log(const std::string &string);
+	virtual void log(const std::string &string) const override;
 
-	virtual void logError(const std::string &string);
+	virtual void logError(const std::string &string) const override;
 
-	virtual void logDebug(const std::string &string);
+	virtual void logDebug(const std::string &string) const override;
 
 };
 

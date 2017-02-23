@@ -7,18 +7,18 @@
 #include <ostream>
 #include <string>
 
-void ScreenLogger::log(const std::string &string) {
+void ScreenLogger::log(const std::string &string) const {
 	std::clog << rang::style::reset << string << std::endl;
 }
 
-void ScreenLogger::logError(const std::string &string) {
+void ScreenLogger::logError(const std::string &string) const {
 	std::clog << rang::fg::red << "ERROR" << rang::style::reset << ": " << rang::fg::red
 	          << string
 	          << rang::style::reset << std::endl;
 
 }
 
-void ScreenLogger::logDebug(const std::string &string) {
+void ScreenLogger::logDebug(const std::string &string) const {
 	if (Logger::isDebugLogActive()) {
 		std::clog << rang::fg::cyan << "DEBUG" << rang::style::reset << ": " << string
 		          << std::endl;
