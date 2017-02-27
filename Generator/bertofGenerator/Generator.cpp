@@ -9,12 +9,15 @@
 #include <regex>
 #include <stdexcept>
 #include <string>
+#include <math.h>
 
 #include "../../Logger/ScreenLogger/ScreenLogger.h"
 #include "../../Logger/TextLogger/TextLogger.h"
 
 std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
 //	throw NotImplementedException();
+
+	std::vector<Pin> result = std::vector<Pin>();
 
 	Logger *screenLog = new ScreenLogger();
 	Logger *fileLog = new TextLogger();
@@ -45,9 +48,40 @@ std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
 
 	screenLog->logDebug("Int value:\t" + std::to_string(intValue));
 
+	screenLog->logDebug(std::to_string(std::ceil(std::log10(intValue)) - 7));
 
+	unsigned long first7Numbers = intValue / std::pow(10, std::ceil(std::log10(intValue)) - 7);
 
-	return std::vector<Pin>();
+	screenLog->logDebug("First 7 numbers of the pin:\t" + std::to_string(first7Numbers));
+
+	unsigned long pin = 10 * first7Numbers;
+	unsigned long accum = 0;
+	unsigned long digit;
+	unsigned long checksum;
+
+	accum = accum + 3 * ((pin / 10000000) % 10);
+	accum = accum + 1 * ((pin / 1000000) % 10);
+	accum = accum + 3 * ((pin / 100000) % 10);
+	accum = accum + 1 * ((pin / 10000) % 10);
+	accum = accum + 3 * ((pin / 1000) % 10);
+	accum = accum + 1 * ((pin / 100) % 10);
+	accum = accum + 3 * ((pin / 10) % 10);
+
+	digit = accum % 10;
+
+	checksum = (10 - digit) % 10;
+
+	screenLog->logDebug("Accum:\t" + std::to_string(accum));
+	screenLog->logDebug("Digit:\t" + std::to_string(digit));
+	screenLog->logDebug("Checksum:\t" + std::to_string(checksum));
+
+	Pin firstResult = Pin(pin + checksum);
+
+	screenLog->logDebug("First result:\t" + firstResult.toString());
+
+	result.push_back(firstResult);
+
+	return result;
 }
 
 std::string bertof::Generator::author() const {
