@@ -60,3 +60,11 @@ void TextLogger::logText(const std::string &message) const {
 		fileOutput.close();
 	}
 }
+
+void TextLogger::logVerbouse(const std::string &messageLogVerbouse) const {
+	if (Logger::isVerbouseLogActive()) {
+		logText("VERBOUSE:\t" + messageDebug);
+	}
+}
+
+

@@ -19,6 +19,8 @@ public:
 
 	virtual void logDebug(const std::string &messageDebug) const override;
 
+	virtual void logVerbouse(const std::string &messageLogVerbouse) const override;
+
 protected:
 	virtual void logText(const std::string &message) const;
 

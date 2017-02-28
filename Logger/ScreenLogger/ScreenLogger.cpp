@@ -24,3 +24,10 @@ void ScreenLogger::logDebug(const std::string &string) const {
 		          << std::endl;
 	}
 }
+
+void ScreenLogger::logVerbouse(const std::string &string) const {
+	if (Logger::isVerbouseLogActive()) {
+		std::clog << rang::fg::cyan << "VERBOUSE" << rang::style::reset << ": " << string
+		          << std::endl;
+	}
+}
