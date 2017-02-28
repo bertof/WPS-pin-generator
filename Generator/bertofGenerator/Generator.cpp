@@ -44,13 +44,19 @@ std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
 
 	screenLog->logDebug("Hex value:\t" + hexValue);
 
-	unsigned long intValue = std::stoul(hexValue, nullptr, 16);
+	std::string lastHalfHexValue = hexValue.substr(6, 6);
+
+	screenLog->logDebug("Last half hex value:\t" + lastHalfHexValue);
+
+	unsigned long intValue = std::stoul(lastHalfHexValue, nullptr, 16);
 
 	screenLog->logDebug("Int value:\t" + std::to_string(intValue));
 
-	screenLog->logDebug(std::to_string(std::ceil(std::log10(intValue)) - 7));
+	unsigned long zaoModeIntValue = intValue % 10000000;
 
-	unsigned long first7Numbers = intValue / std::pow(10, std::ceil(std::log10(intValue)) - 7);
+	screenLog->logDebug("Zao Mode integer value=\t" + std::to_string(zaoModeIntValue));
+
+	unsigned long first7Numbers = zaoModeIntValue / std::pow(10, std::ceil(std::log10(zaoModeIntValue)) - 7);
 
 	screenLog->logDebug("First 7 numbers of the pin:\t" + std::to_string(first7Numbers));
 
