@@ -20,7 +20,7 @@ void TextLogger::log(const std::string &message) const {
  * @param messageError
  */
 void TextLogger::logError(const std::string &messageError) const {
-	logText("Error:\t" + messageError);
+	logText("ERROR:\t" + messageError);
 }
 
 /** Log a debug message
@@ -29,7 +29,7 @@ void TextLogger::logError(const std::string &messageError) const {
  */
 void TextLogger::logDebug(const std::string &messageDebug) const {
 	if (Logger::isDebugLogActive()) {
-		logText("DEBUG:\t" + messageDebug);
+		logText("DBG:\t" + messageDebug);
 	}
 }
 
@@ -61,9 +61,9 @@ void TextLogger::logText(const std::string &message) const {
 	}
 }
 
-void TextLogger::logVerbouse(const std::string &messageLogVerbouse) const {
+void TextLogger::logVerbouse(const std::string &string) const {
 	if (Logger::isVerbouseLogActive()) {
-		logText("VERBOUSE:\t" + messageDebug);
+		logText("VERB:\t" + string);
 	}
 }
 

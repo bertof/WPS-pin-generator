@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Generator/bertofGenerator/Generator.h"
 #include "Logger/ScreenLogger/ScreenLogger.h"
+#include "Logger/DoubleLogger/DoubleLogger.h"
 
 int main() {
 	//TODO better spash screen
@@ -10,6 +11,8 @@ int main() {
 
 	//TODO test enabled debug
 	Logger::setDebugLogActive(true);
+	Logger::setVerbouseLogActive(true);
+
 
 	GeneratorInterface *g = new bertof::Generator();
 

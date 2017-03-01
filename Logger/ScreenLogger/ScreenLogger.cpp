@@ -12,7 +12,7 @@ void ScreenLogger::log(const std::string &string) const {
 }
 
 void ScreenLogger::logError(const std::string &string) const {
-	std::clog << rang::fg::red << "ERROR" << rang::style::reset << ": " << rang::fg::red
+	std::clog << rang::fg::red << "ERROR" << rang::style::reset << ":\t" << rang::fg::red
 	          << string
 	          << rang::style::reset << std::endl;
 
@@ -20,14 +20,14 @@ void ScreenLogger::logError(const std::string &string) const {
 
 void ScreenLogger::logDebug(const std::string &string) const {
 	if (Logger::isDebugLogActive()) {
-		std::clog << rang::fg::cyan << "DEBUG" << rang::style::reset << ": " << string
+		std::clog << rang::fg::cyan << "DBG" << rang::style::reset << ":\t" << string
 		          << std::endl;
 	}
 }
 
 void ScreenLogger::logVerbouse(const std::string &string) const {
 	if (Logger::isVerbouseLogActive()) {
-		std::clog << rang::fg::cyan << "VERBOUSE" << rang::style::reset << ": " << string
+		std::clog << rang::fg::cyan << "VERB" << rang::style::reset << ":\t" << string
 		          << std::endl;
 	}
 }
