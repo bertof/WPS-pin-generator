@@ -13,5 +13,5 @@ void SplashScreen::printSplashScreen() {
 }
 
 std::string SplashScreen::getSplashScreen() {
-	return "TEST";
+	return "WPS Pin Generator - by Bertof";
 }
