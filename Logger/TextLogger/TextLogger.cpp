@@ -7,6 +7,8 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/date_time.hpp>
 
+bool TextLogger::writeOnLogFileActive = false;
+
 /** Logs a message in the log file
  * Logs the message passed in the log file
  * @param message
@@ -48,16 +50,17 @@ TextLogger::TextLogger(const std::string &filePath) : filePath(filePath) {
  * @param message	text to write in the log file
  */
 void TextLogger::logText(const std::string &message) const {
-	boost::filesystem::fstream fileOutput;
-	fileOutput.open(filePath, std::ofstream::app);
-	if (!fileOutput.is_open()) {
-		ScreenLogger l;
-		l.logError("Can't open the log file (" + filePath + ")");
-	} else {
-		std::string nowString = boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time());
-
-		fileOutput << nowString << "\t" << message << std::endl;
-		fileOutput.close();
+	if (TextLogger::isWriteOnLogFileActive()) {
+		boost::filesystem::fstream fileOutput;
+		fileOutput.open(filePath, std::ofstream::app);
+		if (!fileOutput.is_open()) {
+			ScreenLogger l;
+			l.logError("Can't open the log file (" + filePath + ")");
+		} else {
+			std::string nowString = boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time());
+			fileOutput << nowString << "\t" << message << std::endl;
+			fileOutput.close();
+		}
 	}
 }
 
@@ -65,6 +68,14 @@ void TextLogger::logVerbouse(const std::string &string) const {
 	if (Logger::isVerbouseLogActive()) {
 		logText("VERB:\t" + string);
 	}
+}
+
+bool TextLogger::isWriteOnLogFileActive() {
+	return writeOnLogFileActive;
+}
+
+void TextLogger::setWriteOnLogFileActive(bool writeOnLogFileActive) {
+	TextLogger::writeOnLogFileActive = writeOnLogFileActive;
 }
 
 

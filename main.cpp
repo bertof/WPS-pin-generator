@@ -1,4 +1,7 @@
 #include <iostream>
+
+#include "Graphics/SplashScreen/SplashScreen.h"
+
 #include "Generator/bertofGenerator/Generator.h"
 #include "Logger/ScreenLogger/ScreenLogger.h"
 #include "Logger/DoubleLogger/DoubleLogger.h"
@@ -10,9 +13,11 @@ int main() {
 	std::cout << "WPS Pin Generator - by Bertof" << std::endl;
 
 	//TODO test enabled debug
-	Logger::setDebugLogActive(true);
-	Logger::setVerbouseLogActive(true);
+	DoubleLogger::setVerbouseLogActive(true);
+	DoubleLogger::setDebugLogActive(true);
+	DoubleLogger::setWriteOnLogFileActive(true);
 
+	SplashScreen::printSplashScreen();
 
 	GeneratorInterface *g = new bertof::Generator();
 

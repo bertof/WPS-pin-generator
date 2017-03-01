@@ -25,6 +25,21 @@ protected:
 	virtual void logText(const std::string &message) const;
 
 	const std::string filePath;
+
+private:
+	/*** Controls if any TextLogger should write on a file
+	 */
+	static bool writeOnLogFileActive;
+public:
+	/*** Getter for writeOnLogFileActive
+	 * @return writeOnLogFileActive status
+	 */
+	static bool isWriteOnLogFileActive();
+
+	/*** Setter for writeOnLogFileActive
+	 * @param writeOnLogFileActive set to true to enable logging on a text file
+	 */
+	static void setWriteOnLogFileActive(bool writeOnLogFileActive);
 };
 
 

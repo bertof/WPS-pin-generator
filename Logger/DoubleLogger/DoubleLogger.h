@@ -23,7 +23,6 @@ public:
 	void logDebug(const std::string &string) const override;
 
 	void logVerbouse(const std::string &messageLogVerbouse) const override;
-
 };
 
 
