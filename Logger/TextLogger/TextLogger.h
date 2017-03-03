@@ -7,9 +7,9 @@
 
 #include "../Logger.h"
 
-class TextLogger : public Logger {
+class TextLogger : virtual public Logger {
 public:
-	TextLogger(const std::string &filePath = "log.txt");
+	TextLogger();
 
 	virtual ~TextLogger() {}
 
@@ -24,12 +24,19 @@ public:
 protected:
 	virtual void logText(const std::string &message) const;
 
-	const std::string filePath;
-
 private:
 	/*** Controls if any TextLogger should write on a file
 	 */
 	static bool writeOnLogFileActive;
+
+	/*** File path of the log file
+	 */
+	static std::string filePath;
+public:
+	static const std::string &getFilePath();
+
+	static void setFilePath(const std::string &filePath);
+
 public:
 	/*** Getter for writeOnLogFileActive
 	 * @return writeOnLogFileActive status

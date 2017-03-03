@@ -4,7 +4,7 @@
 
 #include "DoubleLogger.h"
 
-DoubleLogger::DoubleLogger(const std::string &filePath) : TextLogger(filePath) {}
+DoubleLogger::DoubleLogger() {}
 
 void DoubleLogger::log(const std::string &string) const {
 	ScreenLogger::log(string);

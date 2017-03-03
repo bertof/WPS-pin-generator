@@ -8,6 +8,7 @@
 #include <boost/date_time.hpp>
 
 bool TextLogger::writeOnLogFileActive = false;
+std::string TextLogger::filePath = "Log.txt";
 
 /** Logs a message in the log file
  * Logs the message passed in the log file
@@ -39,7 +40,7 @@ void TextLogger::logDebug(const std::string &messageDebug) const {
  * Checks if the file path chosen is safely portable or not
  * @param filePath
  */
-TextLogger::TextLogger(const std::string &filePath) : filePath(filePath) {
+TextLogger::TextLogger() {
 	if (!boost::filesystem::portable_name(filePath)) {
 		ScreenLogger l;
 		l.logError("File path not portable. It may create problems.");
@@ -76,6 +77,14 @@ bool TextLogger::isWriteOnLogFileActive() {
 
 void TextLogger::setWriteOnLogFileActive(bool writeOnLogFileActive) {
 	TextLogger::writeOnLogFileActive = writeOnLogFileActive;
+}
+
+const std::string &TextLogger::getFilePath() {
+	return filePath;
+}
+
+void TextLogger::setFilePath(const std::string &filePath) {
+	TextLogger::filePath = filePath;
 }
 
 

@@ -1,20 +1,18 @@
 #include <iostream>
 
 #include "Graphics/SplashScreen/SplashScreen.h"
+#include "InputHandling/InputHandler.h"
 
 #include "Generator/bertofGenerator/Generator.h"
 #include "Logger/ScreenLogger/ScreenLogger.h"
 #include "Logger/DoubleLogger/DoubleLogger.h"
 
-int main() {
+int main(int argc, char *argv[]) {
 	//TODO better spash screen
-	//TODO input handling
+	//TODO better input handling
 	//TODO guide on how to use it (--help)
 
-	//TODO test enabled debug
-	DoubleLogger::setVerbouseLogActive(true);
-	DoubleLogger::setDebugLogActive(true);
-	DoubleLogger::setWriteOnLogFileActive(true);
+	InputHandler::handle(argc, argv);
 
 	SplashScreen::printSplashScreen();
 

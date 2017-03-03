@@ -9,10 +9,10 @@
 #include "../ScreenLogger/ScreenLogger.h"
 #include "../TextLogger/TextLogger.h"
 
-class DoubleLogger : public ScreenLogger, public TextLogger {
+class DoubleLogger : virtual ScreenLogger, public TextLogger {
 public:
 
-	DoubleLogger(const std::string &filePath = "log.txt");
+	DoubleLogger();
 
 	~DoubleLogger() override {};
 

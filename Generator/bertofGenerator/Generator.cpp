@@ -11,54 +11,50 @@
 #include <string>
 #include <math.h>
 
-#include "../../Logger/ScreenLogger/ScreenLogger.h"
-#include "../../Logger/TextLogger/TextLogger.h"
+#include "../../Logger/DoubleLogger/DoubleLogger.h"
 
 std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
-//	throw NotImplementedException();
 
 	std::vector<Pin> result = std::vector<Pin>();
 
-	Logger *screenLog = new ScreenLogger();
-	Logger *fileLog = new TextLogger();
+	Logger *logger = new DoubleLogger();
+
+	logger->logVerbouse("Starting bertofGenerator");
 
 	std::string stringPassed = std::string(s);
 
-	screenLog->logDebug("String passed:\t" + stringPassed);
-	fileLog->logDebug("String passed:\t" + stringPassed);
+	logger->log("String passed:\t" + stringPassed);
 
 	// Cleaning input string, only hexadecimal characters allowed
 	std::string cleanedString = std::regex_replace(stringPassed, std::regex("[^0-9A-F]:"), "");
 
-	screenLog->logDebug("Cleaned string:\t" + cleanedString);
-	fileLog->logDebug("Cleaned string:\t" + cleanedString);
+	logger->logDebug("Cleaned string:\t" + cleanedString);
 
 	// Check if length is valid
 	if (cleanedString.length() != 12 + 5) {
-		screenLog->logError("The string passed is not a valid MAC address");
-		fileLog->logError("The string passed is not a valid MAC address");
+		logger->logError("The string passed is not a valid MAC address");
 		throw InvalidInputException("The string passed is not a valid MAC address");
 	}
 
 	std::string hexValue = std::regex_replace(cleanedString, std::regex(":+"), "");
 
-	screenLog->logDebug("Hex value:\t" + hexValue);
+	logger->logDebug("Hex value:\t" + hexValue);
 
 	std::string lastHalfHexValue = hexValue.substr(6, 6);
 
-	screenLog->logDebug("Last half hex value:\t" + lastHalfHexValue);
+	logger->logDebug("Last half hex value:\t" + lastHalfHexValue);
 
 	unsigned long intValue = std::stoul(lastHalfHexValue, nullptr, 16);
 
-	screenLog->logDebug("Int value:\t" + std::to_string(intValue));
+	logger->logDebug("Int value:\t" + std::to_string(intValue));
 
 	unsigned long zaoModeIntValue = intValue % 10000000;
 
-	screenLog->logDebug("Zao Mode integer value=\t" + std::to_string(zaoModeIntValue));
+	logger->logDebug("Zao Mode integer value=\t" + std::to_string(zaoModeIntValue));
 
 	unsigned long first7Numbers = zaoModeIntValue / std::pow(10, std::ceil(std::log10(zaoModeIntValue)) - 7);
 
-	screenLog->logDebug("First 7 numbers of the pin:\t" + std::to_string(first7Numbers));
+	logger->logDebug("First 7 numbers of the pin:\t" + std::to_string(first7Numbers));
 
 	unsigned long pin = 10 * first7Numbers;
 	unsigned long accum = 0;
@@ -77,13 +73,14 @@ std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
 
 	checksum = (10 - digit) % 10;
 
-	screenLog->logDebug("Accum:\t" + std::to_string(accum));
-	screenLog->logDebug("Digit:\t" + std::to_string(digit));
-	screenLog->logDebug("Checksum:\t" + std::to_string(checksum));
+	logger->logDebug("Accum:\t" + std::to_string(accum));
+	logger->logDebug("Digit:\t" + std::to_string(digit));
+	logger->logDebug("Checksum:\t" + std::to_string(checksum));
 
 	Pin firstResult = Pin(pin + checksum);
 
-	screenLog->logDebug("First result:\t" + firstResult.toString());
+	logger->logVerbouse("End of bertofGenerator");
+	logger->logVerbouse("First result:\t" + firstResult.toString());
 
 	result.push_back(firstResult);
 

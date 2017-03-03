@@ -10,7 +10,7 @@
 #include <string>
 #include <ostream>
 
-class ScreenLogger : public Logger {
+class ScreenLogger : virtual public Logger {
 
 public:
 	virtual ~ScreenLogger() {}
