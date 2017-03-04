@@ -11,10 +11,9 @@ int main(int argc, char *argv[]) {
 	//TODO better spash screen
 	//TODO better input handling
 	//TODO guide on how to use it (--help)
-
 	InputHandler::handle(argc, argv);
 
-	SplashScreen::printSplashScreen();
+	std::cout << SplashScreen::getSplashScreen() << std::endl;
 
 	GeneratorInterface *g = new bertof::Generator();
 

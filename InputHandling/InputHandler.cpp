@@ -7,8 +7,10 @@
 #include "../Logger/TextLogger/TextLogger.h"
 #include "../Logger/DoubleLogger/DoubleLogger.h"
 #include "../Exceptions/InvalidInputException.h"
+#include "../Graphics/HelpScreen/HelpScreen.h"
 
 #include <regex>
+#include <iostream>
 
 void InputHandler::handle(int argc, char **argv) {
 
@@ -44,10 +46,16 @@ void InputHandler::handle(int argc, char **argv) {
 			}
 		}
 
+			// Help dialog
+		else if (args[j] == "--help" || args[j] == "-h") {
+			std::cout << HelpScreen::getHelpScreen() << std::endl;
+		}
+
 			// Case the argument is invalid
 		else {
 			logger->logError("Argument passed is invalid:\t" + args[j]);
 			throw InvalidInputException("Argument passed is invalid:\t\"" + args[j] + "\"");
 		}
 	}
+
 }

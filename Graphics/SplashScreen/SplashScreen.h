@@ -10,7 +10,6 @@
 class SplashScreen {
 public:
 	static void printSplashScreen();
-private:
 	static std::string getSplashScreen();
 };
 
