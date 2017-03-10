@@ -7,21 +7,22 @@
 
 #include "Logger/ScreenLogger/ScreenLogger.h"
 #include "Logger/DoubleLogger/DoubleLogger.h"
+#include "lib/rang/include/rang.hpp"
 
 int main(int argc, char *argv[]) {
-	//TODO better spash screen
-	//TODO better input handling
-	//TODO guide on how to use it (--help)
-	//TODO switch to smart pointers
+  //TODO better spash screen
+  //TODO better input handling
+  //TODO guide on how to use it (--help)
+  //TODO switch to smart pointers
 
-	// Spash screen
-	std::cout << SplashScreen::getSplashScreen() << std::endl;
+  // Spash screen
+  std::cout << SplashScreen::getSplashScreen() << std::endl;
 
-	// Handle input
-	InputHandler::handle(argc, argv);
+  // Handle input
+  InputHandler::handle(argc, argv);
 
-	// END
-	std::cout << "END MAIN" << std::endl;
+  // END
+  std::cout << "END MAIN" << std::endl;
 
-	return 0;
+  return 0;
 }

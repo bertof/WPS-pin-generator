@@ -9,16 +9,14 @@
 #include <vector>
 
 class InputHandler {
-public:
-	static void handle(int argc, char *argv[]);
+ private:
+  static std::string bssidInput;
+ public:
+  static void handle(int argc, char *argv[]);
 
-private:
-	static std::string bssidInput;
-public:
-	static const std::string &getBssidInput();
+  static const std::string &getBssidInput();
 
-	static void setBssidInput(const std::string &bssidInput);
+  static void setBssidInput(const std::string &bssidInput);
 };
-
 
 #endif //WPS_PIN_GENERATOR_INPUTHANDLER_H
