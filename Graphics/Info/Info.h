@@ -14,5 +14,4 @@ public:
 	static std::string getExecutableName();
 };
 
-
 #endif //WPS_PIN_GENERATOR_VERSION_H

@@ -12,5 +12,4 @@ public:
 	static std::string getHelpScreen();
 };
 
-
 #endif //WPS_PIN_GENERATOR_HELPSCREEN_H

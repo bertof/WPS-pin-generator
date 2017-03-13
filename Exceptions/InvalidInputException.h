@@ -11,7 +11,6 @@
 class InvalidInputException : public std::exception {
 public:
 
-
 	/** Constructor (C string)
 	* @param message	C-style string error message.
 	* 						The string contents are copied upon construction.

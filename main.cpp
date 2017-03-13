@@ -10,19 +10,23 @@
 #include "lib/rang/include/rang.hpp"
 
 int main(int argc, char *argv[]) {
-  //TODO better spash screen
-  //TODO better input handling
-  //TODO guide on how to use it (--help)
-  //TODO switch to smart pointers
 
-  // Spash screen
-  std::cout << SplashScreen::getSplashScreen() << std::endl;
+	std::shared_ptr<DoubleLogger> logger;
 
-  // Handle input
-  InputHandler::handle(argc, argv);
+	DoubleLogger::getDoubleLogger();
+	//TODO better spash screen
+	//TODO better input handling
+	//TODO guide on how to use it (--help)
+	//TODO switch to smart pointers
 
-  // END
-  std::cout << "END MAIN" << std::endl;
+	// Spash screen
+	std::cout << SplashScreen::getSplashScreen() << std::endl;
 
-  return 0;
+	// Handle input
+	InputHandler::handle(argc, argv);
+
+	// END
+	logger->logDebug("END MAIN");
+
+	return 0;
 }

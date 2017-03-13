@@ -17,13 +17,13 @@ std::vector<Pin> bertof::Generator::generatePinImp(const std::string &s) const {
 
 	std::vector<Pin> result = std::vector<Pin>();
 
-	Logger *logger = new DoubleLogger();
+	std::shared_ptr<DoubleLogger> logger(DoubleLogger::getDoubleLogger());
 
 	logger->logVerbouse("Starting bertofGenerator");
 
 	std::string stringPassed = std::string(s);
 
-	logger->log("String passed:\t" + stringPassed);
+	logger->logDebug("String passed:\t" + stringPassed);
 
 	// Cleaning input string, only hexadecimal characters allowed
 	std::string cleanedString = std::regex_replace(stringPassed, std::regex("[^0-9A-F]:"), "");

@@ -18,7 +18,7 @@ bool TextLogger::writeOnFileActive = false;
  * @param message
  */
 void TextLogger::log(const std::string &message) const {
-  logText(message);
+	logText(message);
 }
 
 /** Logs an error message
@@ -26,7 +26,7 @@ void TextLogger::log(const std::string &message) const {
  * @param errorMessage
  */
 void TextLogger::logError(const std::string &errorMessage) const {
-  logText("ERROR:\t" + errorMessage);
+	logText("ERROR:\t" + errorMessage);
 }
 
 /** Log a debug message
@@ -34,9 +34,9 @@ void TextLogger::logError(const std::string &errorMessage) const {
  * @param debugMessage
  */
 void TextLogger::logDebug(const std::string &debugMessage) const {
-  if (Logger::isDebugLogActive()) {
-	logText("DBG:\t" + debugMessage);
-  }
+	if (Logger::isDebugLogActive()) {
+		logText("DBG:\t" + debugMessage);
+	}
 }
 
 /** Constructor
@@ -44,53 +44,53 @@ void TextLogger::logDebug(const std::string &debugMessage) const {
  * @param filePath
  */
 TextLogger::TextLogger(const std::string &filePath) : filePath(filePath) {
-  if (!boost::filesystem::portable_name(filePath)) {
-	std::shared_ptr<ScreenLogger> l = ScreenLogger::getScreenLogger();
-	l->logError("File path not portable. It may create problems.");
-  }
+	if (!boost::filesystem::portable_name(filePath)) {
+		std::shared_ptr<ScreenLogger> l = ScreenLogger::getScreenLogger();
+		l->logError("File path not portable. It may create problems.");
+	}
 }
 
 /** Opens file and appends the message passed
  * @param message	text to write in the log file
  */
 void TextLogger::logText(const std::string &message) const {
-  if (TextLogger::isWriteOnFileActive()) {
-	boost::filesystem::fstream fileOutput;
-	fileOutput.open(filePath, std::ofstream::app);
-	if (!fileOutput.is_open()) {
-	  std::shared_ptr<ScreenLogger> l = ScreenLogger::getScreenLogger();
-	  l->logError("Can't open the log file (" + filePath + ")");
-	} else {
-	  std::string nowString = boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time());
-	  fileOutput << nowString << "\t" << message << std::endl;
-	  fileOutput.close();
+	if (TextLogger::isWriteOnFileActive()) {
+		boost::filesystem::fstream fileOutput;
+		fileOutput.open(filePath, std::ofstream::app);
+		if (!fileOutput.is_open()) {
+			std::shared_ptr<ScreenLogger> l = ScreenLogger::getScreenLogger();
+			l->logError("Can't open the log file (" + filePath + ")");
+		} else {
+			std::string nowString = boost::posix_time::to_simple_string(boost::posix_time::second_clock::local_time());
+			fileOutput << nowString << "\t" << message << std::endl;
+			fileOutput.close();
+		}
 	}
-  }
 }
 
 void TextLogger::logVerbouse(const std::string &verbouseMessage) const {
-  if (Logger::isVerbouseLogActive()) {
-	logText("VERB:\t" + verbouseMessage);
-  }
+	if (Logger::isVerbouseLogActive()) {
+		logText("VERB:\t" + verbouseMessage);
+	}
 }
 
 bool TextLogger::isWriteOnFileActive() {
-  return writeOnFileActive;
+	return writeOnFileActive;
 }
 
 void TextLogger::setWriteOnFileActive(bool status) {
-  TextLogger::writeOnFileActive = status;
+	TextLogger::writeOnFileActive = status;
 }
 
 std::shared_ptr<TextLogger> TextLogger::getTextLogger(const std::string &filePath) {
-  if (mainTextLoggerPtr == nullptr) {
-	mainTextLoggerPtr.reset(new TextLogger(filePath));
-  }
-  return mainTextLoggerPtr;
+	if (mainTextLoggerPtr == nullptr) {
+		mainTextLoggerPtr.reset(new TextLogger(filePath));
+	}
+	return mainTextLoggerPtr;
 }
 
 const std::string &TextLogger::getFilePath() const {
-  return filePath;
+	return filePath;
 }
 
 

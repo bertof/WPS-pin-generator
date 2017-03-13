@@ -56,5 +56,4 @@ public:
 	long toInteger() const { return pinValue; }
 };
 
-
 #endif //WPS_PIN_GENERATOR_PIN_H

@@ -57,5 +57,4 @@ public:
 	static void setVerbouseLogActive(bool verbouseLogActive);
 };
 
-
 #endif //WPS_PIN_GENERATOR_LOGGER_H

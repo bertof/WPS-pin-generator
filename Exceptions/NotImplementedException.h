@@ -17,14 +17,14 @@ public:
      *                 with the caller.
      */
 	explicit NotImplementedException(const char *message) :
-			errorMessage_(message) {
+		errorMessage_(message) {
 	}
 
 	/** Constructor (C++ STL strings).
 	 *  @param message The error message.
 	 */
 	explicit NotImplementedException(const std::string &message = "Function not implemented") :
-			errorMessage_(message) {}
+		errorMessage_(message) {}
 
 	/** Destructor.
 	 * Virtual to allow for subclassing.
@@ -45,6 +45,5 @@ protected:
 	 */
 	std::string errorMessage_;
 };
-
 
 #endif //WPS_PIN_GENERATOR_NOTIMPLEMENTEDEXCEPTION_H

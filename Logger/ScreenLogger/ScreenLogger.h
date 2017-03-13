@@ -52,5 +52,4 @@ public:
 	static std::shared_ptr<ScreenLogger> getScreenLogger();
 };
 
-
 #endif //WPS_PIN_GENERATOR_DEBUGGER_H

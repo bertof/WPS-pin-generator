@@ -5,7 +5,7 @@
 #include "Info.h"
 
 std::string Info::getVersion() {
-	return "0.0.1";
+	return "0.0.2";
 }
 
 std::string Info::getProjectName() {
