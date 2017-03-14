@@ -11,16 +11,14 @@
 
 int main(int argc, char *argv[]) {
 
-	std::shared_ptr<DoubleLogger> logger;
-
-	DoubleLogger::getDoubleLogger();
+	std::shared_ptr<DoubleLogger> logger(DoubleLogger::getDoubleLogger());
 	//TODO better spash screen
 	//TODO better input handling
 	//TODO guide on how to use it (--help)
 	//TODO switch to smart pointers
 
 	// Spash screen
-	std::cout << SplashScreen::getSplashScreen() << std::endl;
+	logger->log(SplashScreen::getSplashScreen());
 
 	// Handle input
 	InputHandler::handle(argc, argv);
