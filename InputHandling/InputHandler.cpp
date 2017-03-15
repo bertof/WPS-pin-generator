@@ -7,7 +7,9 @@
 #include "../Logger/TextLogger/TextLogger.h"
 #include "../Logger/DoubleLogger/DoubleLogger.h"
 #include "../Exceptions/InvalidInputException.h"
+#include "../Exceptions/AuthorsScreenException.h"
 #include "../Graphics/HelpScreen/HelpScreen.h"
+#include "../Graphics/AuthorsScreen/AuthorsScreen.h"
 
 #include "../Generator/GeneratorInerface.h"
 #include "../Generator/bertofGenerator/Generator.h"
@@ -81,6 +83,10 @@ void InputHandler::handle(int argc, char **argv) {
 				// Help dialog
 			else if (args[i] == "--help" || args[i] == "-h") {
 				throw HelpScreenException();
+			}
+				// Authors dialog
+			else if (args[i] == "--authors") {
+				throw AuthorsScreenException();
 			}
 
 				// BSSID input
@@ -203,6 +209,8 @@ void InputHandler::handle(int argc, char **argv) {
 	} catch (NotImplementedException e) {
 		std::shared_ptr<DoubleLogger> logger(DoubleLogger::getDoubleLogger());
 		logger->logError(std::string(e.what()));
+	} catch (AuthorsScreenException e) {
+		AuthorsScreen::printAuthorsScreen();
 	}
 }
 

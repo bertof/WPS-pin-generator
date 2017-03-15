@@ -10,8 +10,9 @@
 
 std::string HelpScreen::getHelpScreen() {
 	return
-		"Version: " + Info::getVersion() + "\n" +
-			"USAGE:\n" +
+		"Authors:\t" + Info::getAuthorNames() + "\n" +
+			"Version:\t" + Info::getVersion() + "\n" +
+			"USAGE:\t\t" +
 			Info::getExecutableName() + " [options]\n" +
 			"\n" +
 			"OPTIONS:\n" +
@@ -19,6 +20,7 @@ std::string HelpScreen::getHelpScreen() {
 			"-g\t\t\t\t\t\tUse the generator algorithm\n" +
 			"-d\t\t\t\t\t\tUse the database\n" +
 			"-h, --help\t\t\t\tPrint this help page\n" +
+			"--authors\t\tPrint authors credits\n" +
 			"--debug\t\t\t\t\tPrint all th debug info" +
 			"-v, --verbouse\tLog is more verbouse\n" +
 			"--logfile [log.txt]\t\tEnables log to file (default log.txt)\n" +

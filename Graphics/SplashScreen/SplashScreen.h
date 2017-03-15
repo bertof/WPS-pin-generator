@@ -10,7 +10,6 @@
 class SplashScreen {
 public:
 	static void printSplashScreen();
-	static std::string getSplashScreen();
 };
 
 #endif //WPS_PIN_GENERATOR_SPASHSCREEN_H

@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
 	//TODO switch to smart pointers
 
 	// Spash screen
-	logger->log(SplashScreen::getSplashScreen());
+	SplashScreen::printSplashScreen();
 
 	// Handle input
 	InputHandler::handle(argc, argv);

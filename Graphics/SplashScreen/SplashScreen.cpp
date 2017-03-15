@@ -4,7 +4,10 @@
 
 #include "SplashScreen.h"
 #include <iostream>
+#include "../../lib/rang/include/rang.hpp"
+#include "../Info/Info.h"
 
-std::string SplashScreen::getSplashScreen() {
-	return "WPS Pin Generator - by Bertof";
+void SplashScreen::printSplashScreen() {
+	std::cout << rang::style::reset << rang::style::bold << rang::fg::cyan
+				 << Info::getProjectName() << rang::style::reset << std::endl;
 }

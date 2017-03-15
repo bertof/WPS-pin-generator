@@ -9,9 +9,16 @@ std::string Info::getVersion() {
 }
 
 std::string Info::getProjectName() {
-	return "WPS-pin-generator";
+	return "WPS-pin generator";
 }
 
 std::string Info::getExecutableName() {
 	return "WPS_pin_generator";
+}
+std::string Info::getAuthorNames() {
+	return "bertof";
+}
+std::string Info::getAuthorInfos() {
+	//TODO complete those info
+	return "bertof\n\tEmail:\tbertof [at] protonmail.com\n\tGitHub:\thttps://github.com/bertof";
 }
