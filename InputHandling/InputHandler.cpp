@@ -25,10 +25,10 @@ void InputHandler::handle(int argc, char **argv) {
 		/*** Default logger */
 		std::shared_ptr<DoubleLogger> logger(DoubleLogger::getDoubleLogger());
 
-		/*** bssid input from arguments */
+		/*** BSSID input from arguments */
 		std::vector<std::string> bssid_arguments;
-		/*** assid input from arguments */
-		std::vector<std::string> assid_arguments;
+		/*** ESSID input from arguments */
+		std::vector<std::string> essid_arguments;
 
 		/*** switch to ask for a result based on the generator */
 		bool useGenerator = false;
@@ -105,10 +105,10 @@ void InputHandler::handle(int argc, char **argv) {
 				++i;
 			}
 
-				// ASSID input
-			else if (args[i] == "-a" || args[i] == "--assid") {
+				// ESSID input
+			else if (args[i] == "-e" || args[i] == "--essid") {
 
-				// Listen for a ASSID as next argument
+				// Listen for a ESSID as next argument
 
 				// While i find arguments that match a BSSID format
 				while (i + 1 < args.size() &&
@@ -117,10 +117,9 @@ void InputHandler::handle(int argc, char **argv) {
 					++i;
 				}
 
-				// Check if any ASSID is been given
-				if (assid_arguments.size() == 0) {
-					logger->logError("No ASSID found");
-					throw InvalidInputException("No ASSID found");
+				// Check if any ESSID is been given
+				if (essid_arguments.size() == 0) {
+					throw InvalidInputException("No ESSID found");
 				}
 
 				++i;
@@ -148,11 +147,12 @@ void InputHandler::handle(int argc, char **argv) {
 		// Output generation
 		//TODO output generation
 
-		if (useGenerator || useDatabase) {
-			logger->log("Results:");
-		} else {
-			logger->logError("-g or -d options not set.");
-			throw InvalidInputException();
+		if (!useGenerator && !useDatabase) {
+			throw InvalidInputException("-g or -d options not set.");
+		}
+
+		if (bssid_arguments.size() + essid_arguments.size() == 0) {
+			throw InvalidInputException("No BSSID or ESSID argument given.");
 		}
 
 		if (useGenerator) {
@@ -183,8 +183,8 @@ void InputHandler::handle(int argc, char **argv) {
 			 }
 			}
 
-			for (int k = 0; k < assid_arguments.size(); ++k) {
-			 std::vector<Pin> results = generator.generatePin(assid_arguments[k]);
+			for (int k = 0; k < essid_arguments.size(); ++k) {
+			 std::vector<Pin> results = generator.generatePin(essid_arguments[k]);
 			 logger->log(bssid_arguments[k] + " results:");
 			 for (int i = 0; i < results.size(); ++i) {
 				logger->log(results[i].toString());
@@ -193,14 +193,12 @@ void InputHandler::handle(int argc, char **argv) {
 
 			*/
 
-			logger->logError("Database is not implemented yet");
 			throw NotImplementedException("Database is not implemented yet");
 		}
 
 	} catch (InvalidInputException e) {
 		std::shared_ptr<DoubleLogger> logger(DoubleLogger::getDoubleLogger());
-		logger->logError("Argument passed is invalid:\t" + std::string(e.what()));
-		throw InvalidInputException("Argument passed is invalid:\t\"" + std::string(e.what()) + "\"");
+		logger->logError(std::string(e.what()));
 	} catch (HelpScreenException e) {
 		std::cout << HelpScreen::getHelpScreen() << std::endl;
 	}
