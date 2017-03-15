@@ -98,7 +98,6 @@ void InputHandler::handle(int argc, char **argv) {
 
 				// Check if any BSSID is been given
 				if (bssid_arguments.size() == 0) {
-					logger->logError("No BSSID found");
 					throw InvalidInputException("No BSSID found");
 				}
 
@@ -201,6 +200,9 @@ void InputHandler::handle(int argc, char **argv) {
 		logger->logError(std::string(e.what()));
 	} catch (HelpScreenException e) {
 		std::cout << HelpScreen::getHelpScreen() << std::endl;
+	} catch (NotImplementedException e) {
+		std::shared_ptr<DoubleLogger> logger(DoubleLogger::getDoubleLogger());
+		logger->logError(std::string(e.what()));
 	}
 }
 
