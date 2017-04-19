@@ -177,7 +177,7 @@ void InputHandler::handle(int argc, char **argv) {
 		if (useDatabase) {
 			/*
 
-			 DatabaseInterface *database = new bertof::Database();
+			 DatabaseInterface *database = new bertof::DatabaseController();
 			logger->logVerbouse("Results from database by " + database->author() + " version " + database->version());
 
 			for (int k = 0; k < bssid_arguments.size(); ++k) {
@@ -198,7 +198,7 @@ void InputHandler::handle(int argc, char **argv) {
 
 			*/
 
-			throw NotImplementedException("Database is not implemented yet");
+			throw NotImplementedException("DatabaseController is not implemented yet");
 		}
 
 	} catch (InvalidInputException e) {
