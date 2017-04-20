@@ -1,0 +1,29 @@
+version: 2.0.{build}
+
+skip_tags: true
+
+os:
+  - Windows Server 2012 R2
+  - MinGW
+  - Visual Studio 2015
+
+build:
+  parallel: true
+  verbosity: minimal
+
+init:
+  - cmd: cmake --version
+
+before_build:
+  - cmd: mkdir build
+  - cmd: cd build
+  - cmd: cmake -DBUILD_TESTING=ON ..
+  - cmd: cd ../
+
+test_script:
+  - cmd: cd build\bin\Debug
+  - cmd: runTest.exe
+  - cmd: vTest.exe
+  - cmd: allColors.exe
+
+deploy: off
